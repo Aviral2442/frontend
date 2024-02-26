@@ -1,94 +1,37 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+// rafce 
+import React from 'react'
 
-export default function Home() {
+const Home = () => {
+
+  const sideTitle = 'MY website to Aviral website ';
+
+  const num1 = 10;
+  const num2 = 10;
+
+  const myStyle = {
+    textAlign : 'center',
+  }
+
+  const addNums = (a, b) => {
+    return a + b;
+  }
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Aviral
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    <h1 style={myStyle}>
+      {sideTitle}</h1>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+    {num1*num2}
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+    <p>{addNums(56, 4)}</p>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+    <h1 style={{ color : 'red', fontSize : '5rem' , }} >My First React Based Website </h1>
+    <img src="https://www.racgp.org.au/getattachment/661bf5f7-d8fb-4457-b634-ae131183242a/Fellowship-programs-for-IMGs.aspx" alt="" />
+    <p className='my-btn' >Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero id laboriosam dicta qui sequi unde, dolor hic, iusto facere magni mollitia quia maiores, suscipit minus consequatur reprehenderit fugit. Repellendus, blanditiis eaque provident at ea quaerat inventore debitis soluta, aliquam, porro enim possimus veritatis id incidunt assumenda dicta deserunt obcaecati? Rem saepe eaque officiis optio facilis sed sapiente, atque earum voluptatibus praesentium voluptatum libero perspiciatis at quis ut eum? Et, saepe iste alias odit non veniam perspiciatis laborum error praesentium debitis, aut eveniet necessitatibus magni sed velit. Tempora sed omnis numquam iusto harum, exercitationem placeat eos unde, eveniet quidem, assumenda alias!</p>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    </div>
+  )
 }
+
+export default Home ;
