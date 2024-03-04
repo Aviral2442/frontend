@@ -30,6 +30,14 @@ const Todolist = () => {
         settaskList( [...temp ]);
     }
 
+    const completeTask = (index) => {
+       
+        const temp = taskList;
+        temp[index].completed = !temp[index].completed;
+        settaskList( [...temp ]);
+        console.log(temp);
+    }
+
   return (
     <div className='bg-primary-subtle vh-100'>
         <div className='container py-5' >
@@ -44,10 +52,17 @@ const Todolist = () => {
                 <div className='card-body' >
                     {
                         taskList.map(  (task, index) => { 
-                            return <div key={index} className='p-3 shadow mb-3 d-flex justify-content-between' >
+                            return <div key={index} className='p-3 shadow mb-3 d-flex justify-content-between align-items-center' >
+                                <input type="checkbox" checked={task.completed} />
                                 <p className='my-auto h4' >{task.text}</p>
+                                { task.completed ? 
+                                <span className='badge bg-success'>Completed</span> 
+                                :
+                                <span className='badge bg-danger'>Pending</span> }
                                 <button onClick={ () => {deleteTask(index)} } className='btn btn-danger' >Delete</button>
-                                <button onClick={ () => {completeTask(index)} } className='btn btn-success' >Delete</button>
+                                <button onClick={ () => {completeTask(index)} } className='btn btn-success' >
+                                    { task.completed ? 'Undo' : 'Completed Task' }
+                                </button>
                                 </div>
                          }  )
                     }
