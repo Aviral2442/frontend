@@ -1,7 +1,42 @@
+'use client'
+import { useFormik } from 'formik';
 import Link from 'next/link';
 import React from 'react'
+import * as Yup from 'yup';
+
+const signupvalidationSchema = Yup.object().shape({
+
+  email: Yup.string().email('Email is Invalid').required('Email is required'),
+  name: Yup.string().required('Name is required'),
+  password: Yup.string().required('Enter the password').min(6, 'Password must be at least 6 characters').max(12 , 'Password has to be bellow longer than 12 characters')
+  .matches(/[A-Z]/ , 'Password does not contain Capital letter')
+  .matches(/[a-z]/ , 'Password does not contain Lower letter')
+  .matches(/[0-9]/ , 'Password does not contain Numeric Number '),
+  cpassword: Yup.string().required('Confirm Password is Required')
+  .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+
+});
+
 
 const Signup = () => {
+
+  const signupFrom = useFormik({
+
+    initialValues: {
+      email: '',
+      name: '',
+      password: '',
+      cpassword: '',
+    },
+
+    onSubmit: (values , {resetForm}) => {
+      console.log(values);
+      resetForm();
+    },
+    validationSchema : signupvalidationSchema 
+
+  })
+
   return (
     <section className="vh-100 bg-primary-subtle">
       <div className="container py-5 h-100">
@@ -31,47 +66,67 @@ const Signup = () => {
                     <h3 className="mb-5 text-primary fw-bold">
                       Registration Form
                     </h3>
-                    <form>
+                    <form onSubmit={signupFrom.handleSubmit}>
 
                       <div class="mb-3">
                         <label for="" class="form-label">Email Address</label>
                         <input
                           type="text"
                           id="email"
-                          class="form-control"
+                          onChange={signupFrom.handleChange}
+                          value={signupFrom.values.email}
+                          className="form-control"
                           placeholder=""
                         />
-                        <small class="text-muted">Enter Valid Email Address</small>
+                        {
+                          signupFrom.touched.email &&
+                          <small className="text-danger"> {signupFrom.errors.email} </small>
+                        }
                       </div>
                       <div class="mb-3">
                         <label for="" class="form-label">Name</label>
                         <input
                           type="text"
                           id="name"
-                          class="form-control"
+                          onChange={signupFrom.handleChange}
+                          value={signupFrom.values.name}
+                          className="form-control"
                           placeholder=""
                         />
-                        <small class="text-muted">Enter Full Name</small>
+                        {
+                          signupFrom.touched.name &&
+                          <small className="text-danger"> {signupFrom.errors.name} </small>
+                        }
                       </div>
                       <div class="mb-3">
                         <label for="" class="form-label">Password</label>
                         <input
                           type="password"
                           id="password"
-                          class="form-control"
+                          onChange={signupFrom.handleChange}
+                          value={signupFrom.values.password}
+                          className="form-control"
                           placeholder=""
                         />
-                        <small class="text-muted">Enter Strong Password</small>
+                        {
+                          signupFrom.touched.password &&
+                          <small className="text-danger"> {signupFrom.errors.password} </small>
+                        }
                       </div>
                       <div class="mb-3">
                         <label for="" class="form-label">Confirm Password</label>
                         <input
                           type="password"
                           id="cpassword"
-                          class="form-control"
+                          onChange={signupFrom.handleChange}
+                          value={signupFrom.values.cpassword}
+                          className="form-control"
                           placeholder=""
                         />
-                        <small class="text-muted">Passwords Must Match</small>
+                        {
+                          signupFrom.touched.cpassword &&
+                          <small className="text-danger"> {signupFrom.errors.cpassword} </small>
+                        }
                       </div>
                       <div className="form-check mb-4">
                         <input
