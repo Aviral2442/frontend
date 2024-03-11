@@ -25,7 +25,7 @@ const Postupload = () => {
 
             file: '',
             userName: '',
-            date: '',
+            date: new Date(),
             title: '',
             description: '',
             likes: '',
@@ -123,6 +123,13 @@ const Postupload = () => {
                             name=""
                             id="shares"
                             placeholder='No of Shares' />
+                        <br />
+                        <button type="button" className="btn btn-light pt-4">
+                          Reset all
+                        </button>
+                        <button type="submit" className="btn btn-primary ms-2">
+                          Submit form
+                        </button>
                     </form>
 
                 </div>
