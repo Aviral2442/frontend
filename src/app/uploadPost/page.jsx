@@ -19,7 +19,11 @@ const UploadPost = () => {
 
             fetch('http://localhost:5000/post/add', {
                 method : 'POST',
-                body : JSON.stringify(values)      // convert js to json language
+                body : JSON.stringify(values),     // convert js to json language
+                headers : {
+                    'Content-Type': 'application/json'
+                }
+
             });
         }
     })
