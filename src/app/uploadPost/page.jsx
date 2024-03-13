@@ -24,6 +24,12 @@ const UploadPost = () => {
                     'Content-Type': 'application/json'
                 }
 
+            })
+
+            .then((response) => {
+                console.log(response.status);
+            }).catch((err) => {
+                console.log(err);
             });
         }
     })
