@@ -12,8 +12,9 @@ const UploadPost = () => {
             image: '',
             postedAt: new Date()
         },
-        onSubmit: (values) => {
+        onSubmit: (values, {resetForm}) => {
             console.log(values);
+            resetForm();
 
             // sending request to backend
 
@@ -101,6 +102,7 @@ const UploadPost = () => {
 
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Upload</button>
+                                <button type="button" className="btn btn-light">Reset all</button>
                             </div>
 
                         </form>
