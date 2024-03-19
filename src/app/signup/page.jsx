@@ -145,7 +145,7 @@ const Signup = () => {
                       </div>
                       <div className="d-flex justify-content-end pt-3">
                         <button type="button" className="btn btn-light">
-                          Reset all
+                          Reset all Feilds
                         </button>
                         <button type="submit" className="btn btn-primary ms-2">
                           Submit form

@@ -110,7 +110,7 @@ const Login = () => {
                                             </button>
                                             <div className="text-center">
                                                 <p>Not Registered Yet</p>
-                                                <Link href='/signup'>Register Here</Link>
+                                                <Link href='/signup'>Click here to Register </Link>
                                             </div>
                                         </form>
                                     </div>
