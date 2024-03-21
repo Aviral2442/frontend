@@ -1,6 +1,7 @@
 'use client'
-import { IconHeartBolt, IconShare, IconWriting } from '@tabler/icons-react';
+import { IconHeartBolt, IconShare, IconTrash, IconWriting } from '@tabler/icons-react';
 import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
 
 
 const Feed = () => {
@@ -18,6 +19,7 @@ const Feed = () => {
 
             console.log(response.status);
             return response.json();
+
         })
 
         .then( (data) =>  {
@@ -35,6 +37,22 @@ const Feed = () => {
     useEffect(() => {
       fetchPostData();
     }, []);
+
+    const deletePost = (id) => {
+        fetch('http://localhost:5000/post/delete/' +id,{
+            method: 'DELETE'
+    })
+
+    .then((response) => {
+        if(response.status === 200) {
+            console.log('post deleted successfully');
+            fetchPostData();
+            toast.success('Post Deleted successfully');
+        }
+    }).catch((err) => {
+        console.log(err);
+    });
+       }
     
 
   return (
@@ -49,12 +67,13 @@ const Feed = () => {
             {
                 postArray.map( (post) => { 
                     return <div key={post._id} className='card shadow mb-5' >
-                        <div className="class-header">
+                        <div className=" p-1 class-header d-flex justify-content-between">
                             <h4 className='p-3 text-center' >{post.title}</h4>
+                            <div className="btn btn-danger mt-3 mb-3 " onClick={() => {deletePost(post._id)}} > <IconTrash/></div>
                         </div>
                         <img className='card-img-top' src={post.image} alt="" />
                         <div className="card-footer">
-                            <div className="d-flex g4">
+                            <div className="d-flex g-4">
                                 <button className="btn-outline-primary w-100"><IconHeartBolt></IconHeartBolt> {post.likes}  </button>
                                 <button className="btn-outline-primary w-100"><IconShare></IconShare> {post.shares}  </button>
                                 <button className="btn-outline-primary w-100"><IconWriting></IconWriting> {post.comment}  </button>

@@ -1,6 +1,7 @@
 'use client';
 import { useFormik } from 'formik';
 import React from 'react'
+import toast from 'react-hot-toast';
 
 const UploadPost = () => {
 
@@ -29,6 +30,8 @@ const UploadPost = () => {
 
             .then((response) => {
                 console.log(response.status);
+                toast.success('Post Added successfully');
+
             }).catch((err) => {
                 console.log(err);
             });
